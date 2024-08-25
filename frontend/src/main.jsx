@@ -8,12 +8,12 @@ import {
   RouterProvider,
 } from "react-router-dom";
 
-import "./assets/styles/bootstrap.custom.css";
 import App from "./App.jsx";
-import "./assets/styles/index.css";
-
 import HomeScreen from "./screens/HomeScreen.jsx";
 import ProductScreen from "./screens/ProductScreen.jsx";
+
+import "./assets/styles/bootstrap.custom.css";
+import "./assets/styles/index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,8 +24,13 @@ const router = createBrowserRouter(
   )
 );
 
+import { Provider } from "react-redux";
+import store from "../store.js";
+
 createRoot(document.getElementById("root")).render(
   <StrictMode>
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </StrictMode>
 );
